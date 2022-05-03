@@ -9,11 +9,14 @@ import tinify
 tkinter.messagebox.showinfo(
     'info', 'Selecione a pasta com os arquivos para compressão.')
 
-# asks what directory to work with
+# asks what directory to work with (input)
 path_main = askdirectory(
     initialdir='~/downloads',
     title='Selecione a pasta onde estão os arquivos')
 names = os.listdir(path_main)
+
+# where output files to
+#output_folder = os.path.join(path_main, 'output')
 
 
 def compress_image(image_source, output_file_path):
@@ -65,7 +68,6 @@ size_of_file = [
     (f, os.stat(os.path.join(path_main, f)).st_size)
     for f in files_list]
 
-output_folder = os.path.join(path_main, 'output')
 
 # Iterate over list of files along with size
 for f, s in size_of_file:
@@ -77,7 +79,7 @@ for f, s in size_of_file:
         file_name = f
         # calls the damn thing
         compress_image(os.path.join(path_main, file_name),
-                       os.path.join(output_folder, file_name))
+                       os.path.join(path_main, file_name))
     else:
         pass
         # print(f'no compress, {f}:{s}')
