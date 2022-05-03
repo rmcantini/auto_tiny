@@ -28,11 +28,10 @@ size_of_file = [
 
 # Iterate over list of files along with size
 for f, s in size_of_file:
-    kb_size = s
     MAX_SIZE = 250000
 
     # Check if the file is too heavy
-    if kb_size >= MAX_SIZE:
-        print(f'Found, {f}: {kb_size}')
+    if s >= MAX_SIZE:
+        print(f'Found, {f}: {s}')
     else:
-        print(f'no compress, {f}:{kb_size}')
+        print(f'no compress, {f}:{s}')
