@@ -68,22 +68,26 @@ size_of_file = [
     (f, os.stat(os.path.join(path_main, f)).st_size)
     for f in files_list]
 
+try:
+    # Iterate over list of files along with size
+    for f, s in size_of_file:
+        MAX_SIZE = 250000
 
-# Iterate over list of files along with size
-for f, s in size_of_file:
-    MAX_SIZE = 250000
+        # Check if the file is too heavy
+        if s >= MAX_SIZE:
+            kb_size_file = s
+            file_name = f
+            # calls the damn thing
+            compress_image(os.path.join(path_main, file_name),
+                           os.path.join(path_main, file_name))
+        else:
+            pass
+            # print(f'no compress, {f}:{s}')
 
-    # Check if the file is too heavy
-    if s >= MAX_SIZE:
-        kb_size_file = s
-        file_name = f
-        # calls the damn thing
-        compress_image(os.path.join(path_main, file_name),
-                       os.path.join(path_main, file_name))
-    else:
-        pass
-        # print(f'no compress, {f}:{s}')
+    compressions_this_month = tinify.compression_count
+    tkinter.messagebox.showinfo(
+        'info', f'Sucesso total. \nAquivos comprimidos: {compressions_this_month}, de 500.')
 
-compressions_this_month = tinify.compression_count
-tkinter.messagebox.showinfo(
-    'info', f'Sucesso total. \nAquivos comprimidos: {compressions_this_month}, de 500.')
+except OSError:
+    tkinter.messagebox.showinfo(
+        'info', 'Ocorreu algum problema, arquivos não comprimidos.')
