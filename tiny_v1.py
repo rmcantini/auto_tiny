@@ -7,10 +7,8 @@ import tinify
 def compress_image(image_source, output_file_path):
     ''' compress using tiny '''
     try:
-        image_file_name = os.path.basename(image_source)
-
+        source = tinify.from_url(image_source)
         source = tinify.from_file(image_source)
-        print(f'{image_file_name} compressed successfully')
 
     except tinify.errors.AccountError:
         print('Invalid API Key')
@@ -32,7 +30,7 @@ def compress_image(image_source, output_file_path):
 # defines the input and output folders (change for an tkinter askfolder)
 image_folder = os.path.join(os.getcwd(), 'files')
 # changed to same as input folder
-output_folder = os.path.join(os.getcwd(), 'files')
+output_folder = os.path.join(os.getcwd(), 'Outputs')
 
 # defines which  files to use (change to a for loop that gets all files bigger than 250kb)
 file1 = os.path.join(image_folder, '2213_super_voxus_728x90.png')
