@@ -90,4 +90,4 @@ try:
 
 except OSError:
     tkinter.messagebox.showinfo(
-        'info', 'Ocorreu algum problema, arquivos não comprimidos.')
+        'info', 'Ocorreu algum problema, arquivos não foram comprimidos.')
