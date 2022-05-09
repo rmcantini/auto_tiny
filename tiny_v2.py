@@ -1,5 +1,5 @@
 '''
-code from youtube tut
+python script to automate tiniypng.com using the tinify api
 '''
 import json
 import os
@@ -8,7 +8,6 @@ from tkinter.filedialog import askdirectory
 import tinify
 
 
-''' Trying encapsulate everything '''
 # intro explanation pop-up
 tkinter.messagebox.showinfo(
     'info', 'Selecione a pasta com os arquivos para compressão.')
@@ -59,7 +58,7 @@ tinify.key = api_key
 
 
 def weight(each_file):
-    ''' Get list of all files only in the given directory '''
+    ''' Get list of all files in the given directory '''
     return os.path.isfile(os.path.join(path_main, each_file))
 
 
@@ -71,21 +70,20 @@ size_of_file = [
     for f in files_list]
 
 try:
-    # Iterate over list of files along with size
+    # Iterates over a list of files along with size
     for f, s in size_of_file:
-        max_size = 250000
+        MAX_SIZE = 250000
 
-        # Check if the file is too heavy
-        if s >= max_size:
+        # Checks if the file is too heavy
+        if s >= MAX_SIZE:
             #kb_size_file = s
             file_name = f
-            # calls the damn thing
+            # calls the damn thing (tinify)
             compress_image(os.path.join(path_main, file_name),
                            os.path.join(path_main, file_name))
         else:
-            pass
-            # print(f'no compress, {f}:{s}')
-
+            print(f'no compress, {f}:{s}')
+    # tells the free compression file count
     compressions_this_month = tinify.compression_count
     tkinter.messagebox.showinfo(
         'info', f'Sucesso total. \nAquivos comprimidos: {compressions_this_month}, de 500.')
