@@ -1,4 +1,7 @@
-''' code from youtube tut '''
+#! /usr/bin/env python
+'''
+code from youtube tut
+'''
 import json
 import os
 import tkinter
