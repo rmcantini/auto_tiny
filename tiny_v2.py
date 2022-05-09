@@ -3,13 +3,16 @@ python script to automate tiniypng.com using the tinify api
 '''
 import json
 import os
-import tkinter
+import tkinter as tk
 from tkinter.filedialog import askdirectory
 import tinify
 
 
+# hide root window
+root = tk.Tk()
+root.withdraw()
 # intro explanation pop-up
-tkinter.messagebox.showinfo(
+tk.messagebox.showinfo(
     'info', 'Selecione a pasta com os arquivos para compressão.')
 
 # asks what directory to work with (input)
@@ -31,16 +34,16 @@ def compress_image(image_source, output_file_path):
         print(f'{image_file_name} compressed successfully')
 
     except tinify.errors.AccountError:
-        tkinter.messagebox.showinfo('info', 'Invalid API Key')
+        tk.messagebox.showinfo('info', 'Invalid API Key')
         return False
 
     except tinify.errors.ConnectionError:
-        tkinter.messagebox.showinfo(
+        tk.messagebox.showinfo(
             'info', 'Please check your internet connection')
         return False
 
     except tinify.errors.ClientError:
-        tkinter.messagebox.showinfo('info', 'File type is not supported')
+        tk.messagebox.showinfo('info', 'File type is not supported')
         return False
 
     else:
@@ -85,9 +88,9 @@ try:
             print(f'no compress, {f}:{s}')
     # tells the free compression file count
     compressions_this_month = tinify.compression_count
-    tkinter.messagebox.showinfo(
+    tk.messagebox.showinfo(
         'info', f'Sucesso total. \nAquivos comprimidos: {compressions_this_month}, de 500.')
 
 except OSError:
-    tkinter.messagebox.showinfo(
+    tk.messagebox.showinfo(
         'info', 'Ocorreu algum problema, arquivos não foram comprimidos.')
