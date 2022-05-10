@@ -11,6 +11,7 @@ import tinify
 # hide root window
 root = tk.Tk()
 root.withdraw()
+
 # intro explanation pop-up
 tk.messagebox.showinfo(
     'info', 'Selecione a pasta com os arquivos para compressão.')
