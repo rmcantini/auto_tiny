@@ -1,3 +1,4 @@
+#!/usr/bin/python
 '''
 python script to automate tiniypng.com using the tinify api
 '''
