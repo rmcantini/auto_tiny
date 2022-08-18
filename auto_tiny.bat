@@ -1,1 +1,2 @@
-start "Auto Tiny" pythonw "%~dp0\tiny_div.py"
+@echo off
+"C:\Users\RodrigoMC\AppData\Local\Programs\Python\Python310\python.exe" "C:\Users\RodrigoMC\Documents\CODE\auto_tiny\tiniy_v2.py"
