@@ -54,7 +54,7 @@ def compress_image(image_source, output_file_path):
 
 # finds the json API and reads it
 cwd = os.getcwd()
-os.chdir(os.path.join(cwd, "auto_tiny/.secrets"))
+os.chdir(os.path.join(cwd, "auto_tiny/secrets"))
 api_key = json.loads(open("api_key.json", encoding="utf-8").read())["API_KEY"]
 tinify.key = api_key
 
