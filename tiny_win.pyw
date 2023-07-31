@@ -13,7 +13,8 @@ root = tk.Tk()
 root.withdraw()
 
 # intro explanation pop-up
-tk.messagebox.showinfo("info", "Selecione a pasta com os arquivos para compressão.")
+tk.messagebox.showinfo(
+    "info", "Selecione a pasta com os arquivos para compressão.")
 
 # asks what directory to work with (input)
 path_main = askdirectory(
@@ -54,7 +55,8 @@ def compress_image(image_source, output_file_path):
 
 # finds the json API and reads it
 cwd = os.getcwd()
-os.chdir(os.path.join(cwd, r"C:\Users\rmcan\OneDrive\Documentos\CODE\auto_tiny\secrets"))
+os.chdir(os.path.join(
+    cwd, r"C:\Users\rmcan\OneDrive\Documentos\CODE\auto_tiny\secrets"))
 api_key = json.loads(open("api_key.json", encoding="utf-8").read())["API_KEY"]
 tinify.key = api_key
 
@@ -67,12 +69,13 @@ def weight(each_file):
 files_list = filter(weight, os.listdir(path_main))
 
 # Create a list of files in directory along with the size
-size_of_file = [(f, os.stat(os.path.join(path_main, f)).st_size) for f in files_list]
+size_of_file = [(f, os.stat(os.path.join(path_main, f)).st_size)
+                for f in files_list]
 
 try:
     # Iterates over a list of files along with size
     for f, s in size_of_file:
-        MAX_SIZE = 250000
+        MAX_SIZE = 150000
 
         # Checks if the file is too heavy
         if s >= MAX_SIZE:
@@ -80,7 +83,8 @@ try:
             file_name = f
             # calls the damn thing (tinify)
             compress_image(
-                os.path.join(path_main, file_name), os.path.join(path_main, file_name)
+                os.path.join(path_main, file_name), os.path.join(
+                    path_main, file_name)
             )
         else:
             print(f"no compress, {f}:{s}")
