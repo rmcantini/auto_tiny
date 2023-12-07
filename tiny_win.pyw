@@ -92,7 +92,8 @@ try:
     compressions_this_month = tinify.compression_count
     tk.messagebox.showinfo(
         "info",
-        f"Sucesso total. \nAquivos comprimidos: {compressions_this_month}, de 500.",
+        f"Sucesso total. \nAquivos comprimidos: {
+            compressions_this_month}, de 500.",
     )
 
 except OSError:
