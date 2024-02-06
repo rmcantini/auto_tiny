@@ -75,7 +75,7 @@ size_of_file = [(f, os.stat(os.path.join(path_main, f)).st_size)
 try:
     # Iterates over a list of files along with size
     for f, s in size_of_file:
-        MAX_SIZE = 49000
+        MAX_SIZE = 29000
 
         # Checks if the file is too heavy
         if s >= MAX_SIZE:
